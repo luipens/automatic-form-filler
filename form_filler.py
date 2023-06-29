@@ -20,19 +20,19 @@ submit_another_link = (1701, 404)
 form_data = [{'name': 'Abby Benton', 'email': 'a_benton@example.com',
               'address': '93 Ivy Road Winston Salem, NC 27103',
               'phone_number': '(557) 621-8508', 'hub_city': 'Raleigh',
-              'survey_question': '2'},
+              'survey_question': 1},
              {'name': 'Todd Blackburn', 'email': 't_blackburn@example.com',
               'address': '8378 Colonial Dr. Texarkana, TX 75501',
               'phone_number': '(418) 797-9189', 'hub_city': 'Plano',
-              'survey_question': '4'},
+              'survey_question': 4},
              {'name': 'Suellen Michael', 'email': 's_micheal@example.com',
               'address': '283 Oakwood St. Dallas, TX 75228',
               'phone_number': '(779) 528-7693', 'hub_city': 'Plano',
-              'survey_question': '2'},
+              'survey_question': 2},
              {'name': 'Jonty Reeve', 'email': 'j_reeve@example.com',
               'address': '16 W. Bishop Ave. Nashville, TN 76112',
               'phone_number': '(942) 942-3140', 'hub_city': 'Nashville',
-              'survey_question': '3'}]
+              'survey_question': 3}]
 
 # Pause variable to wait half a second after each function call.
 pyautogui.PAUSE = 0.5
@@ -61,15 +61,15 @@ for person in form_data:
 
     # Fill out the hub city field.
     if person['hub_city'] == 'Plano':
-        pyautogui.write(['down', 'enter', '\t'], 0.5)
+        pyautogui.write(['down', ' ', '\t'], 0.5)
     elif person['hub_city'] == 'Atlanta':
-        pyautogui.write(['down', 'down', 'enter', '\t'], 0.5)
+        pyautogui.write(['down', 'down', ' ', '\t'], 0.5)
     elif person['hub_city'] == 'Nashville':
-        pyautogui.write(['down', 'down', 'down', 'enter', '\t'], 0.5)
+        pyautogui.write(['down', 'down', 'down', ' ', '\t'], 0.5)
     elif person['hub_city'] == 'Raleigh':
-        pyautogui.write(['down', 'down', 'down', 'down', 'enter', '\t'], 0.5)
+        pyautogui.write(['down', 'down', 'down', 'down', ' ', '\t'], 0.5)
     elif person['hub_city'] == 'Chicago':
-        pyautogui.write(['down', 'down', 'down', 'down', 'down', 'enter', '\t'], 0.5)
+        pyautogui.write(['down', 'down', 'down', 'down', 'down', ' ', '\t'], 0.5)
 
     # Fill out the survey field.
     if person['survey_question'] == 1:
@@ -82,6 +82,9 @@ for person in form_data:
         pyautogui.write(['right', 'right', 'right', '\t'], 0.5)
     elif person['survey_question'] == 5:
         pyautogui.write(['right', 'right', 'right', 'right', '\t'], 0.5)
+
+    # Skip over "clear selection" button
+    pyautogui.write(['\t'], 0.5)
 
     # "Click" submit button by pressing enter.
     pyautogui.press('enter')
